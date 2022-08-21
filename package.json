@@ -1,0 +1,23 @@
+{
+  "name": "full-stack-todos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.10.1",
+    "apollo-server-core": "^3.10.1",
+    "apollo-server-express": "^3.10.1",
+    "graphql": "^16.6.0",
+    "mongoose": "^6.5.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
+  }
+}

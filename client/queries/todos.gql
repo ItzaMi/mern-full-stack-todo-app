@@ -1,0 +1,24 @@
+fragment Todo on Todo {
+  description
+  id
+  isCompleted
+  title
+}
+
+query AllTodos {
+  allTodos {
+    ...Todo
+  }
+}
+
+mutation AddTodo($title: String!, $description: String!) {
+  addTodo(title: $title, description: $description) {
+    ...Todo
+  }
+}
+
+mutation MarkTodoAsCompleted($id: ID!) {
+  markTodoAsCompleted(id: $id) {
+    ...Todo
+  }
+}

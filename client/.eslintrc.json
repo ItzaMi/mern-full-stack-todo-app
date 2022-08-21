@@ -1,0 +1,12 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-var": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-console": "warn",
+    "default-case": "error", // Errors if a default case is not provided in switch statements
+    "camelcase": "warn" // Errors if there are variables with underscores
+  },
+  "plugins": ["@typescript-eslint"]
+}

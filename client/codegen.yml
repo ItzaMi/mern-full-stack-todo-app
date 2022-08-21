@@ -1,0 +1,43 @@
+schema: http://localhost:4000/graphql
+overwrite: true
+
+# Format files
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+
+generates:
+  # Get schemas from server
+  queries/autogenerate/schemas.tsx:
+    documents: 'queries/**/**.gql'
+    plugins:
+      - typescript
+
+  # Create operations based on queries
+  # for the arrayInputCoercion, check https://github.com/apollographql/apollo-client/issues/8977#issuecomment-953988626
+  queries/autogenerate/operations.tsx:
+    documents: 'queries/**/**.gql'
+    preset: import-types
+    presetConfig:
+      typesPath: ./schemas
+    plugins:
+      - typescript-operations
+      - named-operations-object
+    config:
+      arrayInputCoercion: false
+
+  # 1. Export GraphQL documents
+
+  # 2. React interface
+  queries/autogenerate/hooks.tsx:
+    documents: 'queries/**/**.gql'
+    preset: import-types
+    presetConfig:
+      typesPath: ./operations
+    plugins:
+      - typescript-react-apollo
+    config:
+      # Optionals
+      withHOC: false
+      withComponent: false
+      withHooks: true
